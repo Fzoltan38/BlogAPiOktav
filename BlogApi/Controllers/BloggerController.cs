@@ -83,5 +83,30 @@ namespace BlogApi.Controllers
                 return BadRequest(new { message = ex.Message, result = "" });
             }
         }
+
+        [HttpDelete]
+        public ActionResult Delete(int id) 
+        {
+            try
+            {
+                using (var context = new BlogDbContext())
+                {
+                    var blogger = context.bloggers.FirstOrDefault(x=> x.Id == id);
+
+                    if(blogger != null)
+                    {
+                        context.bloggers.Remove(blogger);
+                        context.SaveChanges();
+                        return Ok(new { message = "Sikeres törlés", result = blogger });
+                    }
+
+                    return NotFound(new { message = "Sikertelen törlés", result = blogger });
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message, result = "" });
+            }
+        }
     }
 }

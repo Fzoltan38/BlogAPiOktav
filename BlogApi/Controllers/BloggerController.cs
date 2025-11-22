@@ -108,5 +108,36 @@ namespace BlogApi.Controllers
                 return BadRequest(new { message = ex.Message, result = "" });
             }
         }
+
+        [HttpPut]
+        public ActionResult Put(int id, UpdateBloggerDto updateBloggerDto) 
+        {
+            try
+            {
+                using (var context = new BlogDbContext())
+                {
+                    var exstingBlogger = context.bloggers.FirstOrDefault(x=> x.Id == id);
+
+                    if(exstingBlogger != null)
+                    {
+                        exstingBlogger.Name = updateBloggerDto.Name;
+                        exstingBlogger.Password = updateBloggerDto.Password;
+                        exstingBlogger.Email= updateBloggerDto.Email;
+                        exstingBlogger.ModDate = DateTime.Now;
+
+                        context.bloggers.Update(exstingBlogger);
+                        context.SaveChanges();
+
+                        return Ok(new { message = "Sikeres módosítás", result = exstingBlogger });
+                    }
+
+                    return NotFound(new { message = "Sikertelen módosítás", result = exstingBlogger });
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message, result = "" });
+            }
+        }
     }
 }

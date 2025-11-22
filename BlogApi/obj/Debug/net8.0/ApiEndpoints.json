@@ -43,6 +43,27 @@
   },
   {
     "ContainingType": "BlogApi.Controllers.BloggerController",
+    "Method": "Put",
+    "RelativePath": "api/Blogger",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "updateBloggerDto",
+        "Type": "BlogApi.Models.Dtos.UpdateBloggerDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogApi.Controllers.BloggerController",
     "Method": "GetBloggerById",
     "RelativePath": "api/Blogger/byid",
     "HttpMethod": "GET",

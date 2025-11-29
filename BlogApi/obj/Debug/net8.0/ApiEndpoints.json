@@ -64,6 +64,16 @@
   },
   {
     "ContainingType": "BlogApi.Controllers.BloggerController",
+    "Method": "GetAllBloggerAllPosts",
+    "RelativePath": "api/Blogger/allBloggerAllPost",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogApi.Controllers.BloggerController",
     "Method": "GetBloggerById",
     "RelativePath": "api/Blogger/byid",
     "HttpMethod": "GET",

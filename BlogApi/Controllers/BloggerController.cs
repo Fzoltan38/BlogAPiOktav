@@ -2,6 +2,7 @@
 using BlogApi.Models.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlogApi.Controllers
 {
@@ -137,6 +138,28 @@ namespace BlogApi.Controllers
             catch (Exception ex)
             {
                 return BadRequest(new { message = ex.Message, result = "" });
+            }
+        }
+
+        //Összetett lekérdezés
+        //Összes blogger adat összes post-al
+
+        [HttpGet("allBloggerAllPost")]
+        public ActionResult GetAllBloggerAllPosts()
+        {
+            try
+            {
+                using (var context = new BlogDbContext())
+                {
+                    var bloggersWithPosts = context.bloggers.Include(x => x.Posts).ToList();
+                    return Ok(bloggersWithPosts);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
             }
         }
     }

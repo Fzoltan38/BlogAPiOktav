@@ -127,6 +127,18 @@
         }
       }
     },
+    "/api/Blogger/allBloggerAllPost": {
+      "get": {
+        "tags": [
+          "Blogger"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Post": {
       "post": {
         "tags": [

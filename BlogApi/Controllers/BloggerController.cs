@@ -116,7 +116,7 @@ namespace BlogApi.Controllers
             {
                 using (var context = new BlogDbContext())
                 {
-                    var exstingBlogger = context.bloggers.FirstOrDefault(x=> x.Id == id);
+                    var exstingBlogger = context.bloggers.FirstOrDefault(x => x.Id == id);
 
                     if(exstingBlogger != null)
                     {
